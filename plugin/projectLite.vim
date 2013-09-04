@@ -29,7 +29,8 @@ let g:project_file_name = '.projectLite.vim'
   " other other posibilty is to get first item of the list splited by
   " separator and wait till l:current_dir == l:filesystem_root
 " function! Test()
-function! projectLite#findProject()
+" function! projectLite#findProject()
+function! projectLite#find()
   let l:current_dir = getcwd()
   while len(l:current_dir) > 1
     if filereadable(l:current_dir.'/'.g:project_file_name)
@@ -46,7 +47,19 @@ function! projectLite#findProject()
   return 1
 endfunction
 
+
 function! ProjectChange()
-  call projectLite#findProject()
+  call projectLite#find()
+  " call projectLite#findProject()
 endfunction
+
+command! ProjectLiteReload call projectLite#find()
+
+augroup ProjectLite
+  autocmd VimEnter * call projectLite#find()
+augroup END
+
+" debug
+nnoremap  sa :source .vim/bundle/projectLite.vim/plugin/projectLite.vim<cr>
+" :echo "done"<cr>
 
