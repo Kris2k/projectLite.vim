@@ -14,9 +14,10 @@
 "
 " ============================================================================
 
-if !exists("projectLiteLoaded")
+if exists("projectLiteLoaded")
   finish
 endif
+
 let g:projectLiteLoaded = 1
 
 let g:project_file_name = '.projectLite.vim'
