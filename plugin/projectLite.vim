@@ -48,9 +48,8 @@ function! projectLite#find()
 endfunction
 
 
-function! ProjectChange()
+function! ProjectReload()
   call projectLite#find()
-  " call projectLite#findProject()
 endfunction
 
 command! ProjectLiteReload call projectLite#find()
@@ -59,7 +58,7 @@ augroup ProjectLite
   autocmd VimEnter * call projectLite#find()
 augroup END
 
-" debug
+" FIXME: remove this debug
 nnoremap  sa :source .vim/bundle/projectLite.vim/plugin/projectLite.vim<cr>
 " :echo "done"<cr>
 
